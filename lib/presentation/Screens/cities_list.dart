@@ -25,6 +25,7 @@ class CitiesScreen extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SafeArea(
+          //TODO: mirar como optimizar el cities screen
           child: Scaffold(
             body: Stack(children: [
               SafeArea(

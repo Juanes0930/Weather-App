@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/presentation/Screens/home.dart';
+import 'presentation/Screens/cities_list.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,10 +9,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      home: HomeScreen(),
+      theme: ThemeData(useMaterial3: true),
+      initialRoute: 'home',
+      routes: {
+        'home': (context) => const HomeScreen(),
+        'cities': (context) => CitiesScreen(),
+      },
     );
   }
 }

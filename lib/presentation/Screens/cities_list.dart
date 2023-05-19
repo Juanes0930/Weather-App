@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CitiesScreen extends StatelessWidget {
-  final List cities = [
+  final cities = [
     'Tokio',
     'San Francisco',
     'Brasilia',
@@ -20,35 +20,35 @@ class CitiesScreen extends StatelessWidget {
     'Paris'
   ];
 
-  CitiesScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      SafeArea(
-        child: Column(
-          children: [
-            ListView(
-              children: [
-                ...cities.map((cities) => ListTile(
-                      title: Text(
-                        cities,
-                        style: const TextStyle(
-                            fontSize: 16,
-                            fontFamily: 'Play',
-                            color: Colors.white),
-                      ),
-                      trailing: const Icon(Icons.arrow_forward_ios_outlined,
-                          color: Colors.white),
-                      leading:
-                          const Icon(Icons.grade_outlined, color: Colors.white),
-                      onTap: () {},
-                    ))
-              ],
-            )
-          ],
-        ),
-      ),
-    ]);
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SafeArea(
+          child: Scaffold(
+            body: Stack(children: [
+              SafeArea(
+                child: ListView(
+                  children: [
+                    ...cities.map((cities) => ListTile(
+                          title: Text(
+                            cities,
+                            style: const TextStyle(
+                                fontSize: 22,
+                                fontFamily: 'Play',
+                                color: Colors.black),
+                          ),
+                          trailing: const Icon(Icons.arrow_forward_ios_outlined,
+                              color: Colors.black),
+                          leading: const Icon(Icons.grade_outlined,
+                              color: Colors.black),
+                          onTap: () {},
+                        ))
+                  ],
+                ),
+              ),
+            ]),
+          ),
+        ));
   }
 }

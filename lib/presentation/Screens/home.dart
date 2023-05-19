@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather/presentation/Screens/cities_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,7 +21,11 @@ class HomeScreen extends StatelessWidget {
               foregroundColor: Colors.white,
               animationDuration: const Duration(milliseconds: 3),
             ),
-            onPressed: () {},
+            onPressed: () {
+              final route = MaterialPageRoute(
+                  builder: (BuildContext context) => CitiesScreen());
+              Navigator.push(context, route);
+            },
             child: const Text(
               'Continue',
               style: TextStyle(fontSize: 30),
@@ -31,3 +36,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+/*
+
+*/
+ 

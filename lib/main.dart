@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather/presentation/Screens/home.dart';
 import 'presentation/Screens/cities_list.dart';
+import 'presentation/Screens/data_api.dart';
 import 'presentation/provider/services/data_services_provider.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(const AppState());
 
 class AppState extends StatelessWidget {
   const AppState({super.key});
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
       routes: {
         'home': (context) => const HomeScreen(),
         'cities': (context) => CitiesScreen(),
+        'data': (context) => const DataApi(),
       },
     );
   }

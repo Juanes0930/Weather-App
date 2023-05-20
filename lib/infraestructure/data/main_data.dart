@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Main {
   double temp;
   double feelsLike;
@@ -5,8 +7,8 @@ class Main {
   double tempMax;
   int pressure;
   int humidity;
-  int seaLevel;
-  int grndLevel;
+  int? seaLevel;
+  int? grndLevel;
 
   Main({
     required this.temp,
@@ -18,8 +20,8 @@ class Main {
     required this.seaLevel,
     required this.grndLevel,
   });
-
-  factory Main.fromJson(Map<String, dynamic> json) => Main(
+  factory Main.fromjson(String str) => Main.fromMap(json.decode(str));
+  factory Main.fromMap(Map<String, dynamic> json) => Main(
         temp: json["temp"]?.toDouble(),
         feelsLike: json["feels_like"]?.toDouble(),
         tempMin: json["temp_min"]?.toDouble(),
@@ -29,15 +31,4 @@ class Main {
         seaLevel: json["sea_level"],
         grndLevel: json["grnd_level"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "temp": temp,
-        "feels_like": feelsLike,
-        "temp_min": tempMin,
-        "temp_max": tempMax,
-        "pressure": pressure,
-        "humidity": humidity,
-        "sea_level": seaLevel,
-        "grnd_level": grndLevel,
-      };
 }

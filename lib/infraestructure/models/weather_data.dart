@@ -6,11 +6,6 @@ import 'dart:convert';
 
 import '../../shared/exports/exports.dart';
 
-WeatherData weatherDataFromJson(String str) =>
-    WeatherData.fromJson(json.decode(str));
-
-String weatherDataToJson(WeatherData data) => json.encode(data.toJson());
-
 class WeatherData {
   Coord coord;
   List<Weather> weather;
@@ -46,33 +41,18 @@ class WeatherData {
       WeatherData.fromMap(json.decode(str));
 
   factory WeatherData.fromMap(Map<String, dynamic> json) => WeatherData(
-      coord: json['coord'],
-      weather: json['weather'],
+      coord: Coord.fromMap(json['coord']),
+      weather:
+          List<Weather>.from(json['weather'].map((x) => Weather.fromMap(x))),
       base: json['base'],
-      main: json['main'],
+      main: Main.fromMap(json['main']),
       visibility: json['visibility'],
-      wind: json['wind'],
-      clouds: json['clouds'],
+      wind: Wind.fromMap(json['wind']),
+      clouds: Clouds.fromMap(json['clouds']),
       dt: json['dt'],
-      sys: json['sys'],
+      sys: Sys.fromMap(json['sys']),
       timezone: json['timezone'],
       id: json['id'],
       name: json['name'],
       cod: json['cod']);
-
-  Map<String, dynamic> toJson() => {
-        "coord": coord.toJson(),
-        "weather": List<dynamic>.from(weather.map((x) => x.toJson())),
-        "base": base,
-        "main": main.toJson(),
-        "visibility": visibility,
-        "wind": wind.toJson(),
-        "clouds": clouds.toJson(),
-        "dt": dt,
-        "sys": sys.toJson(),
-        "timezone": timezone,
-        "id": id,
-        "name": name,
-        "cod": cod,
-      };
 }

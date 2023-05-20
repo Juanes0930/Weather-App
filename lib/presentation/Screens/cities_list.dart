@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather/presentation/Screens/data_api.dart';
 
 class CitiesScreen extends StatelessWidget {
   final cities = [
@@ -43,7 +44,11 @@ class CitiesScreen extends StatelessWidget {
                               color: Colors.black),
                           leading: const Icon(Icons.grade_outlined,
                               color: Colors.black),
-                          onTap: () {},
+                          onTap: () {
+                            final route = MaterialPageRoute(
+                                builder: (context) => const DataApi());
+                            Navigator.push(context, route);
+                          },
                         ))
                   ],
                 ),

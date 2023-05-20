@@ -11,14 +11,14 @@ class DataServicesProvider extends ChangeNotifier {
 
   String? getData;
   // ignore: non_constant_identifier_names
-  DataServices() {
+  DataServicesProvider() {
     print('Iniciando servicios');
     getDataWeather();
   }
 
   void getDataWeather() async {
     String city;
-    city = 'Bello';
+    city = 'Medellin';
     final queryparams = {
       'q': city,
       'appid': '144007da0a2bd09f5c71a6b63ed17545'
@@ -29,7 +29,7 @@ class DataServicesProvider extends ChangeNotifier {
     final citiesResponse = WeatherData.fromJson(response.body);
     final Map<String, dynamic> decodedData = json.decode(response.body);
     print(decodedData);
-    print(citiesResponse.main);
+    print(citiesResponse.name);
     print(getData = citiesResponse.weather[0].description);
     notifyListeners();
   }

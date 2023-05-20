@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Sys {
   int type;
   int id;
@@ -13,19 +15,12 @@ class Sys {
     required this.sunset,
   });
 
-  factory Sys.fromJson(Map<String, dynamic> json) => Sys(
+  factory Sys.fromJson(String str) => Sys.fromMap(json.decode(str));
+  factory Sys.fromMap(Map<String, dynamic> json) => Sys(
         type: json["type"],
         id: json["id"],
         country: json["country"],
         sunrise: json["sunrise"],
         sunset: json["sunset"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "type": type,
-        "id": id,
-        "country": country,
-        "sunrise": sunrise,
-        "sunset": sunset,
-      };
 }

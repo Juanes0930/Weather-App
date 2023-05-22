@@ -33,7 +33,8 @@ class MyApp extends StatelessWidget {
       routes: {
         'home': (context) => const HomeScreen(),
         'cities': (context) => CitiesScreen(),
-        'data': (context) => const DataApi(),
+        'data': (context) =>
+            DataApi(Provider.of<DataServicesProvider>(context).selectedCity),
       },
     );
   }

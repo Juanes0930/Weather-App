@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class Weather {
   int id;
   String main;
@@ -13,7 +11,7 @@ class Weather {
     required this.icon,
   });
 
-  factory Weather.fromJson(String str) => Weather.fromMap(json.decode(str));
+  //factory Weather.fromJson(String str) => Weather.fromMap(json.decode(str));
 
   factory Weather.fromMap(Map<String, dynamic> json) => Weather(
         id: json["id"],

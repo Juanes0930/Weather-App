@@ -22,10 +22,10 @@ class Main {
   });
   factory Main.fromjson(String str) => Main.fromMap(json.decode(str));
   factory Main.fromMap(Map<String, dynamic> json) => Main(
-        temp: json["temp"]?.toDouble(),
-        feelsLike: json["feels_like"]?.toDouble(),
-        tempMin: json["temp_min"]?.toDouble(),
-        tempMax: json["temp_max"]?.toDouble(),
+        temp: json["temp"].toDouble(),
+        feelsLike: json["feels_like"].toDouble(),
+        tempMin: json["temp_min"].toDouble(),
+        tempMax: json["temp_max"].toDouble(),
         pressure: json["pressure"],
         humidity: json["humidity"],
         seaLevel: json["sea_level"],

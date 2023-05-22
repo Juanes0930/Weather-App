@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weather/presentation/Screens/data_api.dart';
+
+import '../provider/services/data_services_provider.dart';
 
 class CitiesScreen extends StatelessWidget {
   final cities = [
@@ -45,8 +48,12 @@ class CitiesScreen extends StatelessWidget {
                           leading: const Icon(Icons.grade_outlined,
                               color: Colors.black),
                           onTap: () {
+                            Provider.of<DataServicesProvider>(context,
+                                    listen: false)
+                                .getDataWeather(cities);
+
                             final route = MaterialPageRoute(
-                                builder: (context) => const DataApi());
+                                builder: (context) => DataApi(cities));
                             Navigator.push(context, route);
                           },
                         ))

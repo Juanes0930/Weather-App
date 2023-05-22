@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DataApi extends StatelessWidget {
-  const DataApi({super.key});
+  const DataApi(String selectedCity, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class DataApi extends StatelessWidget {
                       height: 35,
                     ),
                     Icon(
-                      Icons.sunny,
+                      Icons.sunny_snowing,
                       size: 150,
                     ),
                     SizedBox(

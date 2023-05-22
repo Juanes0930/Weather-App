@@ -3,7 +3,7 @@ import 'dart:convert';
 class Sys {
   int type;
   int id;
-  String country;
+  String? country;
   int sunrise;
   int sunset;
 

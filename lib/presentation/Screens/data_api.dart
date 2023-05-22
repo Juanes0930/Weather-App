@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:weather/widgets/columns/custom_columns.dart';
-
-import '../../shared/exports/exports.dart';
 import '../provider/services/data_services_provider.dart';
 
 class DataApi extends StatelessWidget {

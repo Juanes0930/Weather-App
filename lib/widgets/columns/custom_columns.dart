@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../presentation/provider/services/data_services_provider.dart';
-import '../../shared/exports/exports.dart';
 
+// ignore: must_be_immutable
 class CustomColumns extends StatelessWidget {
   String nameCity = '';
   String temperature = '';
@@ -13,7 +13,7 @@ class CustomColumns extends StatelessWidget {
   String weatherData = '';
   String timeZone = '';
 
-  CustomColumns({super.key}) {}
+  CustomColumns({super.key});
 
   @override
   Widget build(BuildContext context) {

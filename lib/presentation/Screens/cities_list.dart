@@ -17,19 +17,17 @@ class CitiesScreen extends StatelessWidget {
     'New York',
     'Roma',
     'La Habana',
-    'Asterdam',
+    'Amsterdam',
     'Quito',
-    'Nueva Delhi',
-    'Madrid',
-    'Paris'
   ];
+
+  CitiesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: SafeArea(
-          //TODO: mirar como optimizar el cities screen
           child: Scaffold(
             body: Stack(children: [
               SafeArea(

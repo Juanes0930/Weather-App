@@ -1,106 +1,93 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:weather/widgets/columns/custom_columns.dart';
+
+import '../../shared/exports/exports.dart';
+import '../provider/services/data_services_provider.dart';
 
 class DataApi extends StatelessWidget {
-  const DataApi(String selectedCity, {super.key});
+  String nameCity = '';
+  String temperature = '';
+  String humedity = '';
+  String windSpeed = '';
+  String visibility = '';
+  String weatherData = '';
+  String timeZone = '';
+
+  DataApi(String city, {super.key}) {
+    nameCity = city;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    //nameCity = Provider.of<DataServicesProvider>(context).name.toUpperCase();
+    temperature = '${Provider.of<DataServicesProvider>(context).temperature}°';
+    humedity = '${Provider.of<DataServicesProvider>(context).humidity}%';
+    windSpeed =
+        '${Provider.of<DataServicesProvider>(context).windSpeed} Mts/sec';
+    visibility = '${Provider.of<DataServicesProvider>(context).visibility} Mts';
+    weatherData = Provider.of<DataServicesProvider>(context).weatherData;
+    timeZone = Provider.of<DataServicesProvider>(context).timeZone;
+
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           body: Stack(children: [
-            SizedBox(
+            const SizedBox(
               child: Padding(padding: EdgeInsets.all(10)),
             ),
             Center(
               child: Padding(
-                padding:
-                    EdgeInsets.only(top: 150, bottom: 100, right: 20, left: 40),
+                padding: const EdgeInsets.only(
+                    top: 100, bottom: 80, right: 20, left: 20),
                 child: Column(
                   children: [
-                    Text('PARIS', style: TextStyle(fontSize: 30)),
-                    SizedBox(
+                    Text(nameCity.toUpperCase(),
+                        style:
+                            const TextStyle(fontSize: 34, fontFamily: 'Play')),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Text('10: 30 PM', style: TextStyle(fontSize: 16)),
+                    Provider.of<DataServicesProvider>(context).loading
+                        ? const CircularProgressIndicator()
+                        : SizedBox(
+                            height: 290,
+                            width: double.infinity,
+                            child: Image.network(
+                                fit: BoxFit.fitHeight,
+                                Provider.of<DataServicesProvider>(context)
+                                    .assetUrl),
+                          ),
+                    Text(temperature,
+                        style:
+                            const TextStyle(fontSize: 40, fontFamily: 'Play')),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(weatherData,
+                        style:
+                            const TextStyle(fontSize: 18, fontFamily: 'Play')),
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text('TUESDAY 10:35 PM', style: TextStyle(fontSize: 16)),
-                    SizedBox(
-                      height: 35,
-                    ),
-                    Icon(
-                      Icons.sunny_snowing,
-                      size: 150,
-                    ),
-                    SizedBox(
-                      height: 45,
-                    ),
-                    Text('35°C', style: TextStyle(fontSize: 30)),
-                    SizedBox(
+                    Text(nameCity.toUpperCase(),
+                        style:
+                            const TextStyle(fontSize: 20, fontFamily: 'Play')),
+                    const SizedBox(
                       height: 20,
                     ),
-                    Text('overcast clouds', style: TextStyle(fontSize: 16)),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text('PARIS', style: TextStyle(fontSize: 20)),
-                    SizedBox(
-                      height: 30,
+                    //CustomColumns(),
+                    const SizedBox(
+                      height: 10,
                     ),
                     Center(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.sunny_snowing,
-                            size: 50,
-                          ),
-                          SizedBox(
-                            width: 90,
-                          ),
-                          Icon(
-                            Icons.wind_power,
-                            size: 50,
-                          ),
-                          SizedBox(width: 90),
-                          Icon(
-                            Icons.device_thermostat_outlined,
-                            size: 50,
-                          ),
-                        ],
-                      ),
+                      child: CustomColumns(),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Center(
-                      child: Row(
-                        children: [
-                          Text('Strong Rain'),
-                          SizedBox(
-                            width: 52,
-                          ),
-                          Text('Speed Wind'),
-                          SizedBox(width: 52),
-                          Text('Temperature'),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Center(
-                      child: Row(
-                        children: [
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Text('6.00'),
-                          SizedBox(
-                            width: 90,
-                          ),
-                          Text('10m/s'),
-                          SizedBox(width: 110),
-                          Text('49°'),
-                        ],
-                      ),
+                    const SizedBox(
+                      height: 10,
                     ),
                   ],
                 ),

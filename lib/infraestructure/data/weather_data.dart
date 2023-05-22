@@ -11,8 +11,6 @@ class Weather {
     required this.icon,
   });
 
-  //factory Weather.fromJson(String str) => Weather.fromMap(json.decode(str));
-
   factory Weather.fromMap(Map<String, dynamic> json) => Weather(
         id: json["id"],
         main: json["main"],

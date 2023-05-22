@@ -1,26 +1,15 @@
 import 'dart:convert';
 
 class Sys {
-  int type;
-  int id;
-  String? country;
-  int sunrise;
-  int sunset;
-
   Sys({
-    required this.type,
-    required this.id,
-    required this.country,
-    required this.sunrise,
-    required this.sunset,
+    this.country,
   });
 
+  String? country;
+
   factory Sys.fromJson(String str) => Sys.fromMap(json.decode(str));
+
   factory Sys.fromMap(Map<String, dynamic> json) => Sys(
-        type: json["type"],
-        id: json["id"],
         country: json["country"],
-        sunrise: json["sunrise"],
-        sunset: json["sunset"],
       );
 }
